@@ -61,6 +61,7 @@
 		AE5C12A52C85C2F9008FADA9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AE5C12A72C85D1AB008FADA9 /* TMDBNetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBNetworkConfig.swift; sourceTree = "<group>"; };
 		AE5C12A92C85D8A4008FADA9 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		AE5C12AB2C85FCF9008FADA9 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +92,7 @@
 		AE5C125F2C80903B008FADA9 = {
 			isa = PBXGroup;
 			children = (
+				AE5C12AB2C85FCF9008FADA9 /* Modules */,
 				AE5C126A2C80903B008FADA9 /* MoviesBrowser */,
 				AE5C12812C80903C008FADA9 /* MoviesBrowserTests */,
 				AE5C128B2C80903C008FADA9 /* MoviesBrowserUITests */,
