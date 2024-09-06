@@ -23,8 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Task {
             do {
-                let movies = try await service.searchMovies(query: "inter")
-                let interstellar = try await service.fetchMovieDetails(id: 157336)
+                let movies = try await service.fetchPopularMovies()
                 print(movies.count)
             } catch {
                 print(error.localizedDescription)

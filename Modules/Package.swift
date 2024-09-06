@@ -6,6 +6,13 @@ let package = Package(
     platforms: [.iOS(.v17)],
     products: [
         .library(
+            name: "DesignSystem",
+            targets: ["DesignSystem"]
+        ),
+        .library(
+            name: "MBCore",
+            targets: ["MBCore"]),
+        .library(
             name: "MBMovies",
             targets: ["MBMovies"]),
     ],
@@ -15,8 +22,18 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "DesignSystem",
+            resources: [
+                .process("Resources")
+            ]
+        ),
+        .target(
+            name: "MBCore"
+        ),
+        .target(
             name: "MBMovies",
             dependencies: [
+                "MBCore",
                 "SDWebImage",
                 "SnapKit"
             ]
