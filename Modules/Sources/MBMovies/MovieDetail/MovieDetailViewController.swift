@@ -3,7 +3,7 @@ import SDWebImage
 import SnapKit
 import MBCore
 
-public class MoviesViewController: UIViewController {
+public class MovieDetailViewController: UIViewController {
     
     private weak var tableView: UITableView!
     
@@ -16,12 +16,11 @@ public class MoviesViewController: UIViewController {
     private func configureTableView() {
         tableView.separatorStyle = .none
         tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.identifier)
+        tableView.register(MovieDetailCell.self, forCellReuseIdentifier: MovieDetailCell.identifier)
     }
 }
 
-extension MoviesViewController {
+extension MovieDetailViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
@@ -30,7 +29,7 @@ extension MoviesViewController {
     }
     
     private func setupNavigationTitle() {
-        title = "Movies"
+        title = "Movie Detail"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -46,30 +45,17 @@ extension MoviesViewController {
     }
 }
 
-extension MoviesViewController: UITableViewDataSource {
+extension MovieDetailViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailCell.identifier, for: indexPath) as? MovieDetailCell
         else {
             return UITableViewCell()
         }
         
         return cell
-    }
-}
-
-extension MoviesViewController: UITableViewDelegate {
-    
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presentMovieDetail()
-    }
-    
-    private func presentMovieDetail() {
-        let controller = MovieDetailViewController()
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
     }
 }
