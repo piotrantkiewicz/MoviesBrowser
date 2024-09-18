@@ -7,10 +7,24 @@ public class MoviesViewController: UIViewController {
     
     private weak var tableView: UITableView!
     
+    public var viewModel: MoviesViewModel!
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         configureTableView()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Task {
+            await viewModel.fetchPopularMovies()
+            Task { @MainActor in
+                tableView.reloadData()
+            }
+            
+        }
     }
     
     private func configureTableView() {
@@ -48,7 +62,7 @@ extension MoviesViewController {
 
 extension MoviesViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        viewModel.movies.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,6 +70,9 @@ extension MoviesViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
+        
+        let movie = viewModel.movies[indexPath.row]
+        cell.configure(with: movie)
         
         return cell
     }

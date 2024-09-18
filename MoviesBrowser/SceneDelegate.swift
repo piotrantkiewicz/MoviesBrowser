@@ -10,23 +10,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let controller = MoviesViewController()
-        let nav = UINavigationController(rootViewController: controller)
-        window.rootViewController = nav
-        window.makeKeyAndVisible()
-        self.window = window
-        
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "TMDBAPIAccessToken") as! String
         let config = TMDBNetworkConfig(accessToken: accessToken)
         let networkService = NetworkServiceLive(config: config)
         let service = MoviesServiceLive(accessToken: accessToken, networkService: networkService)
         
+        let controller = MoviesViewController()
+        controller.viewModel = MoviesViewModel(moviesService: service)
+        let nav = UINavigationController(rootViewController: controller)
+        window.rootViewController = nav
+        window.makeKeyAndVisible()
+        self.window = window
+        
+        
+        
         Task {
             do {
                 let movies = try await service.fetchPopularMovies()
                 let movie = try await service.searchMovies(query: "deadpool")
-                let movieDetail = try await service.fetchMovieDetails(id: 533535)
-                print(movieDetail)
             } catch {
                 print(error.localizedDescription)
             }

@@ -24,6 +24,16 @@ class MovieCell: UITableViewCell {
         
         setupUI()
     }
+    
+    func configure(with movie: Movie) {
+        movieNameLbl.text = movie.title
+        releaseDateLbl.text = movie.releaseDate
+        
+        if let posterPath = movie.posterPath {
+            let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+            movieImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(resource: .movie))
+        }
+    }
 }
 
 extension MovieCell {
