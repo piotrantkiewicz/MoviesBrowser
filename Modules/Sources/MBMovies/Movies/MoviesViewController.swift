@@ -81,11 +81,13 @@ extension MoviesViewController: UITableViewDataSource {
 extension MoviesViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presentMovieDetail()
+        let movie = viewModel.movies[indexPath.row]
+        presentMovieDetail(movie: movie)
     }
     
-    private func presentMovieDetail() {
+    private func presentMovieDetail(movie: Movie) {
         let controller = MovieDetailViewController()
+        controller.viewModel = MovieDetailViewModel(movie: movie, moviesService: viewModel.moviesService)
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }

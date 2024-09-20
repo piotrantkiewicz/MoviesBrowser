@@ -4,7 +4,7 @@ public class MoviesViewModel {
     
     var movies: [Movie] = []
     
-    private let moviesService: MoviesService
+    let moviesService: MoviesService
     
     public init(moviesService: MoviesService) {
         self.moviesService = moviesService

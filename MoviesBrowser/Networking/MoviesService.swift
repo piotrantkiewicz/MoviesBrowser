@@ -40,13 +40,3 @@
 //        try await networkService.fetch(path: "/movie/\(id)")
 //    }
 //}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//

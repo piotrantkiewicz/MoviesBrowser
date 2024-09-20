@@ -26,6 +26,19 @@ class MovieDetailCell: UITableViewCell {
         
         setupUI()
     }
+    
+    func configure(with movieDetail: MovieDetail) {
+        movieNameLbl.text = movieDetail.title
+        releaseDateLbl.text = movieDetail.releaseDate
+        movieOverviewLbl.text = movieDetail.overview
+        voteAverageLbl.text = String(format: "%.2f", movieDetail.voteAverage)
+        
+        
+        if let posterPath = movieDetail.posterPath {
+            let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+            movieImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(resource: .movie))
+        }
+    }
 }
 
 extension MovieDetailCell {

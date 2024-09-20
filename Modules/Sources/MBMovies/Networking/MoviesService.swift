@@ -3,6 +3,7 @@ import Foundation
 public protocol MoviesService {
     func fetchPopularMovies() async throws -> [Movie]
     func searchMovies(query: String) async throws -> [Movie]
+    func fetchMovieDetails(id: Int) async throws -> MovieDetail
 }
 
 public class MoviesServiceLive: MoviesService {
@@ -34,5 +35,9 @@ public class MoviesServiceLive: MoviesService {
         let moviesResponse: MoviesResponse = try await networkService.fetch(path: "/search/movie", queryItems: [queryItem])
         
         return moviesResponse.results
+    }
+    
+    public func fetchMovieDetails(id: Int) async throws -> MovieDetail {
+        try await networkService.fetch(path: "/movie/\(id)")
     }
 }

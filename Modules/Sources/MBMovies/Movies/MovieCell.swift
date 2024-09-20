@@ -114,13 +114,11 @@ extension MovieCell {
     
     private func setupMovieNameLbl() -> UILabel {
         let movieNameLbl = UILabel()
-        movieNameLbl.text = "Deadpool & Wolverine"
         return movieNameLbl
     }
     
     private func setupReleaseDateLbl() -> UILabel {
         let releaseDateLbl = UILabel()
-        releaseDateLbl.text = "2024-07-24"
         return releaseDateLbl
     }
 }

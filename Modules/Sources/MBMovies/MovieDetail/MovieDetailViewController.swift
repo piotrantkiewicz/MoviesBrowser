@@ -7,6 +7,8 @@ public class MovieDetailViewController: UIViewController {
     
     private weak var tableView: UITableView!
     
+    public var viewModel: MovieDetailViewModel!
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -17,6 +19,21 @@ public class MovieDetailViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.register(MovieDetailCell.self, forCellReuseIdentifier: MovieDetailCell.identifier)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Task {
+            do {
+                try await viewModel.fetchMovieDetail()
+                Task { @MainActor in
+                    tableView.reloadData()
+                }
+            } catch {
+                print("Error fetching movie details: \(error)")
+            }
+        }
     }
 }
 
@@ -47,13 +64,17 @@ extension MovieDetailViewController {
 
 extension MovieDetailViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return viewModel.movieDetail == nil ? 0 : 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailCell.identifier, for: indexPath) as? MovieDetailCell
         else {
             return UITableViewCell()
+        }
+        
+        if let movieDetail = viewModel.movieDetail {
+            cell.configure(with: movieDetail)
         }
         
         return cell
