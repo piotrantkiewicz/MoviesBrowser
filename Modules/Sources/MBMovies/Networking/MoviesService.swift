@@ -34,7 +34,9 @@ public class MoviesServiceLive: MoviesService {
         
         let moviesResponse: MoviesResponse = try await networkService.fetch(path: "/search/movie", queryItems: [queryItem])
         
-        return moviesResponse.results
+        return moviesResponse.results.map {
+            $0.toDomain()
+        }
     }
     
     public func fetchMovieDetails(id: Int) async throws -> MovieDetail {

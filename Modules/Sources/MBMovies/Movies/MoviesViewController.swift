@@ -3,7 +3,15 @@ import SDWebImage
 import SnapKit
 import MBCore
 
+enum MoviesStrings: String {
+    case moviesSection = "Movies"
+}
+
 public class MoviesViewController: UIViewController {
+    
+    private lazy var searchController: UISearchController = {
+        UISearchController(searchResultsController: nil)
+    }()
     
     private weak var tableView: UITableView!
     
@@ -17,14 +25,7 @@ public class MoviesViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        Task {
-            await viewModel.fetchPopularMovies()
-            Task { @MainActor in
-                tableView.reloadData()
-            }
-            
-        }
+        loadMovies()
     }
     
     private func configureTableView() {
@@ -32,6 +33,15 @@ public class MoviesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.identifier)
+    }
+    
+    private func loadMovies() {
+        Task {
+            try await viewModel.fetchPopularMovies()
+            Task { @MainActor in
+                tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -41,11 +51,20 @@ extension MoviesViewController {
         view.backgroundColor = .white
         setupNavigationTitle()
         setupTableView()
+        setupSearchController()
     }
     
     private func setupNavigationTitle() {
         title = "Movies"
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.tintColor = .black
+        
+        navigationItem.searchController = searchController
     }
     
     private func setupTableView() {
@@ -60,9 +79,21 @@ extension MoviesViewController {
     }
 }
 
+extension MoviesViewController: UISearchResultsUpdating {
+    public func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        viewModel.search(with: searchText)
+        tableView.reloadData()
+    }
+}
+
 extension MoviesViewController: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sectionTitles.count
+    }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.movies.count
+        let key = viewModel.sectionTitles[section]
+        return viewModel.movies[key]?.count ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +102,9 @@ extension MoviesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let movie = viewModel.movies[indexPath.row]
+        let key = viewModel.sectionTitles[indexPath.section]
+        let movie = viewModel.movies[key]![indexPath.row]
+        
         cell.configure(with: movie)
         
         return cell
@@ -81,7 +114,9 @@ extension MoviesViewController: UITableViewDataSource {
 extension MoviesViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = viewModel.movies[indexPath.row]
+        let key = viewModel.sectionTitles[indexPath.section]
+        let movie = viewModel.movies[key]![indexPath.row]
+        
         presentMovieDetail(movie: movie)
     }
     
