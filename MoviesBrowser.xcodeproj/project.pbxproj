@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1FF90A2CA427260073C579 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FF9092CA427260073C579 /* AppCoordinator.swift */; };
+		AE1FF90C2CA4272D0073C579 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FF90B2CA4272D0073C579 /* AppAssembly.swift */; };
 		AE5C126C2C80903B008FADA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C126B2C80903B008FADA9 /* AppDelegate.swift */; };
 		AE5C126E2C80903B008FADA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */; };
 		AE5C12702C80903B008FADA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C126F2C80903B008FADA9 /* ViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE1FF9092CA427260073C579 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		AE1FF90B2CA4272D0073C579 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		AE5C12682C80903B008FADA9 /* MoviesBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5C126B2C80903B008FADA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				AE5C129D2C80914E008FADA9 /* Domain */,
 				AE5C126B2C80903B008FADA9 /* AppDelegate.swift */,
 				AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */,
+				AE1FF9092CA427260073C579 /* AppCoordinator.swift */,
+				AE1FF90B2CA4272D0073C579 /* AppAssembly.swift */,
 				AE5C126F2C80903B008FADA9 /* ViewController.swift */,
 				AE5C12742C80903C008FADA9 /* Assets.xcassets */,
 				AE5C12762C80903C008FADA9 /* LaunchScreen.storyboard */,
@@ -317,9 +323,11 @@
 			files = (
 				AE5C12702C80903B008FADA9 /* ViewController.swift in Sources */,
 				AE5C12A82C85D1AB008FADA9 /* TMDBNetworkConfig.swift in Sources */,
+				AE1FF90A2CA427260073C579 /* AppCoordinator.swift in Sources */,
 				AE5C126C2C80903B008FADA9 /* AppDelegate.swift in Sources */,
 				AE5C129C2C80905F008FADA9 /* MoviesService.swift in Sources */,
 				AE5C126E2C80903B008FADA9 /* SceneDelegate.swift in Sources */,
+				AE1FF90C2CA4272D0073C579 /* AppAssembly.swift in Sources */,
 				AE5C129F2C809156008FADA9 /* MovieDTO.swift in Sources */,
 				AE5C12A12C8093F9008FADA9 /* MoviesResponseDTO.swift in Sources */,
 				AE5C12A62C85C2F9008FADA9 /* NetworkService.swift in Sources */,

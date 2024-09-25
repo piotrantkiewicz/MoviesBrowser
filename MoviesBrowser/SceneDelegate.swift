@@ -1,37 +1,37 @@
 import UIKit
+import MBCore
 import MBMovies
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var container: Container!
+    var coordinator: AppCoordinator!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        setupContainer()
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
+        window = UIWindow(windowScene: windowScene)
         
-        let accessToken = Bundle.main.object(forInfoDictionaryKey: "TMDBAPIAccessToken") as! String
-        let config = TMDBNetworkConfig(accessToken: accessToken)
-        let networkService = NetworkServiceLive(config: config)
-        let service = MoviesServiceLive(accessToken: accessToken, networkService: networkService)
+        setupAppCoordinator()
+    }
+    
+    private func setupAppCoordinator() {
+        let navigationController = UINavigationController()
         
-        let controller = MoviesViewController()
-        controller.viewModel = MoviesViewModel(moviesService: service)
-        let nav = UINavigationController(rootViewController: controller)
-        window.rootViewController = nav
-        window.makeKeyAndVisible()
-        self.window = window
+        let coordinator = AppCoordinator(
+            navigationController: navigationController,
+            container: container
+        )
         
+        coordinator.start()
         
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
         
-        Task {
-            do {
-                let movies = try await service.fetchPopularMovies()
-                let movie = try await service.searchMovies(query: "deadpool")
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
+        self.coordinator = coordinator
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -61,7 +61,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 
+extension SceneDelegate {
+
+    private func setupContainer() {
+        container = Container()
+        AppAssembly(container: container).asemble()
+    }
+}

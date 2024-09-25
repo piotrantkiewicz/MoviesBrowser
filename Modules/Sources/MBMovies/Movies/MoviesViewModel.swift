@@ -1,19 +1,27 @@
 import UIKit
+import Swinject
 
-public class MoviesViewModel {
+public final class MoviesViewModel {
+    private let container: Container
+    private let coordinator: MoviesCoordinator
+    private var repository: MoviesService {
+        container.resolve(MoviesService.self)!
+    }
     
     private var moviesSource: [Movie] = []
     var movies: [String: [Movie]] = [:]
     var sectionTitles: [String] = []
     
-    let moviesService: MoviesService
-    
-    public init(moviesService: MoviesService) {
-        self.moviesService = moviesService
+    public init(
+        container: Container,
+        coordinator: MoviesCoordinator
+    ) {
+        self.container = container
+        self.coordinator = coordinator
     }
     
     func fetchPopularMovies() async throws {
-        moviesSource = try await moviesService.fetchPopularMovies()
+        moviesSource = try await repository.fetchPopularMovies()
         updateMovies(with: moviesSource)
     }
     
@@ -41,5 +49,9 @@ public class MoviesViewModel {
     private func updateMovies(with movies: [Movie]) {
         self.movies = Dictionary(grouping: movies, by: { $0.title.first.map { String($0) } ?? "A" })
         sectionTitles = self.movies.keys.sorted()
+    }
+    
+    func didSelectMovie(_ movie: Movie) {
+        coordinator.showMovieDetail(for: movie)
     }
 }

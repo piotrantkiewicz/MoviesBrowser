@@ -117,13 +117,6 @@ extension MoviesViewController: UITableViewDelegate {
         let key = viewModel.sectionTitles[indexPath.section]
         let movie = viewModel.movies[key]![indexPath.row]
         
-        presentMovieDetail(movie: movie)
-    }
-    
-    private func presentMovieDetail(movie: Movie) {
-        let controller = MovieDetailViewController()
-        controller.viewModel = MovieDetailViewModel(movie: movie, moviesService: viewModel.moviesService)
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
+        viewModel.didSelectMovie(movie)
     }
 }

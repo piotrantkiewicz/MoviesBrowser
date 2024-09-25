@@ -36,7 +36,7 @@ class MovieDetailCell: UITableViewCell {
         
         if let posterPath = movieDetail.posterPath {
             let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
-            movieImageView.sd_setImage(with: imageURL, placeholderImage: UIImage(resource: .movie))
+            movieImageView.sd_setImage(with: imageURL)
         }
     }
 }
@@ -83,7 +83,6 @@ extension MovieDetailCell {
     
     private func setupImageView() {
         let imageView = UIImageView()
-        imageView.image = UIImage(resource: .movie)
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
