@@ -8,7 +8,7 @@ public final class MoviesViewModel {
         container.resolve(MoviesService.self)!
     }
     
-    private var moviesSource: [Movie] = []
+    var moviesSource: [Movie] = []
     var movies: [String: [Movie]] = [:]
     var sectionTitles: [String] = []
     

@@ -37,5 +37,12 @@ let package = Package(
                 "Swinject",
             ]
         ),
+        .testTarget(
+            name: "MBMoviesTests",
+            dependencies: [
+                "MBMovies",
+                "Swinject"
+            ]
+        ),
     ]
 )
