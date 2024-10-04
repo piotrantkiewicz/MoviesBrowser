@@ -23,7 +23,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DesignSystem"
+            name: "DesignSystem",
+            resources: [
+                .process("Resources")
+            ]
         ),
         .target(
             name: "MBCore"
@@ -31,6 +34,7 @@ let package = Package(
         .target(
             name: "MBMovies",
             dependencies: [
+                "DesignSystem",
                 "MBCore",
                 "SDWebImage",
                 "SnapKit",

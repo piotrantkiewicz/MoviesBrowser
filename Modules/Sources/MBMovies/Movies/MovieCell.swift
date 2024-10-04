@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import DesignSystem
 
 class MovieCell: UITableViewCell {
     
@@ -50,6 +51,9 @@ extension MovieCell {
     
     private func setupContainer() {
         let view = UIView()
+        view.backgroundColor = .background
+        view.layer.cornerRadius = 30
+        view.layer.masksToBounds = true
         
         contentView.addSubview(view)
         
@@ -57,10 +61,10 @@ extension MovieCell {
         
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalTo(150)
+            make.bottom.equalToSuperview().offset(-20)
+            make.left.equalTo(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(145)
         }
     }
     
@@ -75,8 +79,7 @@ extension MovieCell {
         stackView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.top.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(-20)
+            make.centerY.equalToSuperview()
         }
     }
     
@@ -84,12 +87,12 @@ extension MovieCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(imageView)
         
         imageView.snp.makeConstraints { make in
-            make.height.equalTo(100)
-            make.width.equalTo(50)
+            make.height.equalTo(105)
+            make.width.equalTo(70)
         }
         
         self.movieImageView = imageView
@@ -101,10 +104,14 @@ extension MovieCell {
         labelsStackView.spacing = 2
         
         let movieNameLbl = setupMovieNameLbl()
+        movieNameLbl.font = .title
+        movieNameLbl.numberOfLines = 0
         labelsStackView.addArrangedSubview(movieNameLbl)
         self.movieNameLbl = movieNameLbl
         
         let releaseDateLbl = setupReleaseDateLbl()
+        releaseDateLbl.font = .subtitle
+        releaseDateLbl.textColor = .textGray
         labelsStackView.addArrangedSubview(releaseDateLbl)
         self.releaseDateLbl = releaseDateLbl
         
