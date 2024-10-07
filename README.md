@@ -2,6 +2,11 @@
 
 MoviesBrowser is an iOS application that allows users to browse and search for movies using The Movie Database (TMDb) API. This project demonstrates the implementation of modern iOS development practices, including clean architecture, MVVM-C pattern, and unit testing.
 
+<div style="display: flex; justify-content: center;">
+  <img src="movies_screen.png" alt="Movies Screen" style="width: 45%; margin-right: 10px;" />
+  <img src="movies_screen.png" alt="Movies Screen" style="width: 45%;" />
+</div>
+
 ## Features
 
 - Browse popular movies
@@ -29,14 +34,17 @@ This project is built using the following architectural patterns and principles:
 
 The project follows a modular architecture with the following main components:
 
+![Project Structure](project_structure.png)
+
 - `NetworkService`: Handles all network requests
-- `DesignSystem`: Manages the design guidelines with fonts and colors 
+- `DesignSystem`: Manages the design guidelines with fonts and colors
 - `MBCore`: Contain the shared core functionality of the app
 - `MBMovies`: UI components with MVVM-C Architecture
 
 ## Setup Instructions
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/piotrantkiewicz/MoviesBrowser.git
    ```
@@ -44,12 +52,14 @@ The project follows a modular architecture with the following main components:
 2. Open `MoviesBrowser.xcodeproj` in Xcode.
 
 3. Set up your TMDb API Key:
+
    - Sign up for a TMDb API key at [https://developer.themoviedb.org](https://developer.themoviedb.org)
    - Open the `Info.plist` file in your project
    - Add a new key called `TMDBAPIAccessToken`
    - Set the value of this key to your TMDb API access token
 
 4. Install dependencies:
+
    - The project uses Swift Package Manager for dependency management
    - Xcode should automatically fetch the dependencies when you open the project
    - If not, go to File > Packages > Resolve Package Versions
