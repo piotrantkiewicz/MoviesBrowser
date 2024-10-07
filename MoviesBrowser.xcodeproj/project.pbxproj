@@ -17,12 +17,6 @@
 		AE5C12832C80903C008FADA9 /* MoviesBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C12822C80903C008FADA9 /* MoviesBrowserTests.swift */; };
 		AE5C128D2C80903C008FADA9 /* MoviesBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C128C2C80903C008FADA9 /* MoviesBrowserUITests.swift */; };
 		AE5C128F2C80903C008FADA9 /* MoviesBrowserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C128E2C80903C008FADA9 /* MoviesBrowserUITestsLaunchTests.swift */; };
-		AE5C129C2C80905F008FADA9 /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C129B2C80905F008FADA9 /* MoviesService.swift */; };
-		AE5C129F2C809156008FADA9 /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C129E2C809156008FADA9 /* MovieDTO.swift */; };
-		AE5C12A12C8093F9008FADA9 /* MoviesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C12A02C8093F9008FADA9 /* MoviesResponseDTO.swift */; };
-		AE5C12A62C85C2F9008FADA9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C12A52C85C2F9008FADA9 /* NetworkService.swift */; };
-		AE5C12A82C85D1AB008FADA9 /* TMDBNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C12A72C85D1AB008FADA9 /* TMDBNetworkConfig.swift */; };
-		AE5C12AA2C85D8A4008FADA9 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C12A92C85D8A4008FADA9 /* MovieDetail.swift */; };
 		AE5C12AE2C872003008FADA9 /* MBMovies in Frameworks */ = {isa = PBXBuildFile; productRef = AE5C12AD2C872003008FADA9 /* MBMovies */; };
 		AE76460E2C8B70E500195360 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = AE76460D2C8B70E500195360 /* DesignSystem */; };
 		AE7646102C8B70E500195360 /* MBCore in Frameworks */ = {isa = PBXBuildFile; productRef = AE76460F2C8B70E500195360 /* MBCore */; };
@@ -61,12 +55,6 @@
 		AE5C12882C80903C008FADA9 /* MoviesBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5C128C2C80903C008FADA9 /* MoviesBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesBrowserUITests.swift; sourceTree = "<group>"; };
 		AE5C128E2C80903C008FADA9 /* MoviesBrowserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesBrowserUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AE5C129B2C80905F008FADA9 /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
-		AE5C129E2C809156008FADA9 /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
-		AE5C12A02C8093F9008FADA9 /* MoviesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponseDTO.swift; sourceTree = "<group>"; };
-		AE5C12A52C85C2F9008FADA9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		AE5C12A72C85D1AB008FADA9 /* TMDBNetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBNetworkConfig.swift; sourceTree = "<group>"; };
-		AE5C12A92C85D8A4008FADA9 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		AE5C12AB2C85FCF9008FADA9 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,8 +112,6 @@
 		AE5C126A2C80903B008FADA9 /* MoviesBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				AE5C12A42C85C2E2008FADA9 /* Networking */,
-				AE5C129D2C80914E008FADA9 /* Domain */,
 				AE5C126B2C80903B008FADA9 /* AppDelegate.swift */,
 				AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */,
 				AE1FF9092CA427260073C579 /* AppCoordinator.swift */,
@@ -153,26 +139,6 @@
 				AE5C128E2C80903C008FADA9 /* MoviesBrowserUITestsLaunchTests.swift */,
 			);
 			path = MoviesBrowserUITests;
-			sourceTree = "<group>";
-		};
-		AE5C129D2C80914E008FADA9 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				AE5C129E2C809156008FADA9 /* MovieDTO.swift */,
-				AE5C12A92C85D8A4008FADA9 /* MovieDetail.swift */,
-				AE5C12A02C8093F9008FADA9 /* MoviesResponseDTO.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		AE5C12A42C85C2E2008FADA9 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				AE5C129B2C80905F008FADA9 /* MoviesService.swift */,
-				AE5C12A52C85C2F9008FADA9 /* NetworkService.swift */,
-				AE5C12A72C85D1AB008FADA9 /* TMDBNetworkConfig.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		AE5C12AC2C872003008FADA9 /* Frameworks */ = {
@@ -322,16 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE5C12702C80903B008FADA9 /* ViewController.swift in Sources */,
-				AE5C12A82C85D1AB008FADA9 /* TMDBNetworkConfig.swift in Sources */,
 				AE1FF90A2CA427260073C579 /* AppCoordinator.swift in Sources */,
 				AE5C126C2C80903B008FADA9 /* AppDelegate.swift in Sources */,
-				AE5C129C2C80905F008FADA9 /* MoviesService.swift in Sources */,
 				AE5C126E2C80903B008FADA9 /* SceneDelegate.swift in Sources */,
 				AE1FF90C2CA4272D0073C579 /* AppAssembly.swift in Sources */,
-				AE5C129F2C809156008FADA9 /* MovieDTO.swift in Sources */,
-				AE5C12A12C8093F9008FADA9 /* MoviesResponseDTO.swift in Sources */,
-				AE5C12A62C85C2F9008FADA9 /* NetworkService.swift in Sources */,
-				AE5C12AA2C85D8A4008FADA9 /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
