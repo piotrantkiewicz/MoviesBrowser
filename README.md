@@ -3,8 +3,8 @@
 MoviesBrowser is an iOS application that allows users to browse and search for movies using The Movie Database (TMDb) API. This project demonstrates the implementation of modern iOS development practices, including clean architecture, MVVM-C pattern, and unit testing.
 
 <div style="display: flex; justify-content: center;">
-  <img src="movie_detail_screen.png" alt="Movie Detail Screen" style="width: 45%; margin-right: 10px;" />
-  <img src="movies_screen.png" alt="Movies Screen" style="width: 45%;" />
+  <img src="movies_screen.png" alt="Movies Screen" style="width: 45%; margin-right: 10px;" />
+  <img src="movie_detail_screen.png" alt="Movie Detail Screen" style="width: 45%;"/>
 </div>
 
 ## Features
