@@ -11,9 +11,7 @@
 		AE1FF90C2CA4272D0073C579 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FF90B2CA4272D0073C579 /* AppAssembly.swift */; };
 		AE5C126C2C80903B008FADA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C126B2C80903B008FADA9 /* AppDelegate.swift */; };
 		AE5C126E2C80903B008FADA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */; };
-		AE5C12702C80903B008FADA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C126F2C80903B008FADA9 /* ViewController.swift */; };
 		AE5C12752C80903C008FADA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5C12742C80903C008FADA9 /* Assets.xcassets */; };
-		AE5C12782C80903C008FADA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AE5C12772C80903C008FADA9 /* Base */; };
 		AE5C12832C80903C008FADA9 /* MoviesBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C12822C80903C008FADA9 /* MoviesBrowserTests.swift */; };
 		AE5C128D2C80903C008FADA9 /* MoviesBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C128C2C80903C008FADA9 /* MoviesBrowserUITests.swift */; };
 		AE5C128F2C80903C008FADA9 /* MoviesBrowserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5C128E2C80903C008FADA9 /* MoviesBrowserUITestsLaunchTests.swift */; };
@@ -46,9 +44,7 @@
 		AE5C12682C80903B008FADA9 /* MoviesBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5C126B2C80903B008FADA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AE5C126F2C80903B008FADA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AE5C12742C80903C008FADA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AE5C12772C80903C008FADA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE5C12792C80903C008FADA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5C127E2C80903C008FADA9 /* MoviesBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5C12822C80903C008FADA9 /* MoviesBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesBrowserTests.swift; sourceTree = "<group>"; };
@@ -116,9 +112,7 @@
 				AE5C126D2C80903B008FADA9 /* SceneDelegate.swift */,
 				AE1FF9092CA427260073C579 /* AppCoordinator.swift */,
 				AE1FF90B2CA4272D0073C579 /* AppAssembly.swift */,
-				AE5C126F2C80903B008FADA9 /* ViewController.swift */,
 				AE5C12742C80903C008FADA9 /* Assets.xcassets */,
-				AE5C12762C80903C008FADA9 /* LaunchScreen.storyboard */,
 				AE5C12792C80903C008FADA9 /* Info.plist */,
 			);
 			path = MoviesBrowser;
@@ -262,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE5C12752C80903C008FADA9 /* Assets.xcassets in Resources */,
-				AE5C12782C80903C008FADA9 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +280,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE5C12702C80903B008FADA9 /* ViewController.swift in Sources */,
 				AE1FF90A2CA427260073C579 /* AppCoordinator.swift in Sources */,
 				AE5C126C2C80903B008FADA9 /* AppDelegate.swift in Sources */,
 				AE5C126E2C80903B008FADA9 /* SceneDelegate.swift in Sources */,
@@ -326,17 +318,6 @@
 			targetProxy = AE5C12892C80903C008FADA9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		AE5C12762C80903C008FADA9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AE5C12772C80903C008FADA9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AE5C12902C80903C008FADA9 /* Debug */ = {
