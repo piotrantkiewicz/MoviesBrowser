@@ -31,11 +31,11 @@ class MovieDetailCell: UITableViewCell {
         movieNameLbl.text = movieDetail.title
         releaseDateLbl.text = movieDetail.releaseDate
         movieOverviewLbl.text = movieDetail.overview
-        voteAverageLbl.text = String(format: "%.2f", movieDetail.voteAverage)
+        voteAverageLbl.text = String(format: "%.2f", movieDetail.voteAverage) + ("/10")
         
         
         if let posterPath = movieDetail.posterPath {
-            let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+            let imageURL = URL(string: "https://image.tmdb.org/t/p/original\(posterPath)")
             movieImageView.sd_setImage(with: imageURL)
         }
     }
@@ -55,13 +55,19 @@ extension MovieDetailCell {
     
     private func setupContainer() {
         let view = UIView()
+        view.backgroundColor = .background
+        view.layer.cornerRadius = 30
+        view.layer.masksToBounds = true
         
         contentView.addSubview(view)
         
         self.containerView = view
         
         containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(5)
+            make.bottom.equalToSuperview().offset(-20)
+            make.left.equalTo(20)
+            make.right.equalToSuperview().offset(-20)
         }
     }
     
@@ -85,12 +91,12 @@ extension MovieDetailCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(imageView)
         
         imageView.snp.makeConstraints { make in
             make.height.equalTo(300)
-            make.width.equalTo(150)
+            make.width.equalTo(200)
         }
         
         self.movieImageView = imageView
@@ -100,8 +106,27 @@ extension MovieDetailCell {
         let labelsStackView = UIStackView()
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 2
-        labelsStackView.alignment = .center
         
+        let voteStackView = UIStackView()
+        voteStackView.axis = .horizontal
+        voteStackView.alignment = .center
+        voteStackView.spacing = 5
+        
+        let starIcon = UIImageView()
+        starIcon.image = UIImage(systemName: "star.circle.fill")
+        starIcon.tintColor = .systemYellow
+        voteStackView.addArrangedSubview(starIcon)
+        
+        starIcon.snp.makeConstraints { make in
+            make.width.height.equalTo(25)
+            make.bottom.equalToSuperview().inset(5)
+        }
+        
+        let voteAverageLbl = setupVoteAverage()
+        voteStackView.addArrangedSubview(voteAverageLbl)
+        self.voteAverageLbl = voteAverageLbl
+        
+        labelsStackView.addArrangedSubview(voteStackView)
         
         let movieNameLbl = setupMovieNameLbl()
         labelsStackView.addArrangedSubview(movieNameLbl)
@@ -111,9 +136,11 @@ extension MovieDetailCell {
         labelsStackView.addArrangedSubview(releaseDateLbl)
         self.releaseDateLbl = releaseDateLbl
         
-        let voteAverageLbl = setupVoteAverage()
-        labelsStackView.addArrangedSubview(voteAverageLbl)
-        self.voteAverageLbl = voteAverageLbl
+        let spacerView = UIView()
+        spacerView.snp.makeConstraints { make in
+            make.height.equalTo(10)
+        }
+        labelsStackView.addArrangedSubview(spacerView)
         
         let movieOverviewLbl = setupMovieOverview()
         labelsStackView.addArrangedSubview(movieOverviewLbl)
@@ -124,25 +151,28 @@ extension MovieDetailCell {
     
     private func setupMovieNameLbl() -> UILabel {
         let movieNameLbl = UILabel()
-        movieNameLbl.text = "Deadpool & Wolverine"
+        movieNameLbl.font = .title2
+        movieNameLbl.numberOfLines = 0
         return movieNameLbl
     }
     
     private func setupReleaseDateLbl() -> UILabel {
         let releaseDateLbl = UILabel()
-        releaseDateLbl.text = "2024-07-24"
+        releaseDateLbl.font = .subtitle
+        releaseDateLbl.textColor = .textGray
         return releaseDateLbl
     }
     
     private func setupVoteAverage() -> UILabel {
         let voteAverageLbl = UILabel()
-        voteAverageLbl.text = "7.73"
+        voteAverageLbl.font = .subtitle2
         return voteAverageLbl
     }
     
     private func setupMovieOverview() -> UILabel {
         let movieOverviewLbl = UILabel()
-        movieOverviewLbl.text = "A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary, Deadpool, behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine."
+        movieOverviewLbl.font = .description
+        movieOverviewLbl.numberOfLines = 0
         return movieOverviewLbl
     }
 }
